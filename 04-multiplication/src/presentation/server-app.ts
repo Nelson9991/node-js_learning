@@ -17,14 +17,18 @@ export class ServerApp {
     fileName,
     fileDestination
   }: RunOptions) {
+    console.log('Server is running...');
+
     const table = new CreateTable().execute({ base, limit });
-    if (showTable) console.log(table);
 
     const wasCreated = new SaveFile().execute({
       fileContent: table,
       fileDestination,
       fileName
     });
+
+    if (showTable) console.log(table);
+
     if (wasCreated) console.log(`File created!`);
     else console.log(`File not created!`);
   }
